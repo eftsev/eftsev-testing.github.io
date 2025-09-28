@@ -2410,11 +2410,18 @@ if (feature.properties.Country === "Italy" && currentTask === 2) {
     blur.style.display = 'block';
     setTimeout(() => blur.style.opacity = 1, 10);
 
-    // Default to Info tab
+    // Default to Info tab - FIXED VERSION
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = 'none');
+    document.querySelectorAll('.tab-content').forEach(tc => {
+        tc.classList.remove('active');
+        tc.style.display = 'none';
+    });
+    
+    // Activate Info tab
     document.querySelector('.tab-btn[data-tab="info"]').classList.add('active');
-    document.getElementById('tab-info').style.display = 'flex';
+    const infoTab = document.getElementById('tab-info');
+    infoTab.classList.add('active');
+    infoTab.style.display = 'flex';
 }
 
 function closeMonumentOverlay() {
